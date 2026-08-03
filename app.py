@@ -11,7 +11,7 @@ import pickle
 def load_artifacts():
     with open("churn_xgboost_model.pkl", "rb") as f:
         model = pickle.load(f)
-    with open("churn_encoder_v2.pkl", "rb") as f:
+    with open("churn_encoder_v3.pkl", "rb") as f:
         encoder = pickle.load(f)
     return model, encoder
 model, encoder = load_artifacts()
