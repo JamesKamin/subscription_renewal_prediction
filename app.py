@@ -10,7 +10,7 @@ import pickle
 
 
 @st.cache_resource
-def load_model():
+def load_artifacts():
     try:
         model = joblib.load("churn_stacking_ensemble_model.joblib")
         with open("churn_encoder_v2.pkl", "rb") as f:
