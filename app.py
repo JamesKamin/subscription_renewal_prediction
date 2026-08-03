@@ -11,14 +11,11 @@ import pickle
 
 @st.cache_resource
 def load_artifacts():
-    try:
-        model = joblib.load("churn_stacking_ensemble_model.joblib")
-        with open("churn_encoder_v2.pkl", "rb") as f:
-             encoder = pickle.load(f)
-        return model, encoder
-    except Exception:
-        traceback.print_exc()
-        raise
+     with open("churn_stacking_ensemble_model.joblib", "rb") as f:
+        model = joblib.load(f)
+    with open("churn_encoder_v2.pkl", "rb") as f:
+        encoder = pickle.load(f)
+    return model, encoder
 model, encoder = load_artifacts()
 
 
