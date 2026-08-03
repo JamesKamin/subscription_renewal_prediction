@@ -8,17 +8,17 @@ import pandas as pd
 import joblib
 import pickle
 
+
 @st.cache_resource
-def load_artifacts():
+def load_model():
     try:
-    model = joblib.load("churn_stacking_ensemble_model.joblib")
-    with open("churn_encoder_v2.pkl", "rb") as f:
-        encoder = pickle.load(f)
-    return model, encoder
+        model = joblib.load("churn_stacking_ensemble_model.joblib")
+        with open("churn_encoder_v2.pkl", "rb") as f:
+             encoder = pickle.load(f)
+        return model, encoder
     except Exception:
         traceback.print_exc()
         raise
-    
 model, encoder = load_artifacts()
 
 
