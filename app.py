@@ -11,7 +11,7 @@ import pickle
 
 @st.cache_resource
 def load_artifacts():
-     with open("churn_stacking_ensemble_model.joblib", "rb") as f:
+    with open("churn_stacking_ensemble_model.joblib", "rb") as f:
         model = joblib.load(f)
     with open("churn_encoder_v2.pkl", "rb") as f:
         encoder = pickle.load(f)
