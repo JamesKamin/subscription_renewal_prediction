@@ -4,12 +4,12 @@
 import streamlit as st
 import numpy as np
 import pandas as pd
+import joblib
 import pickle
 
 @st.cache_resource
 def load_artifacts():
-    with open("churn_stacking_ensemble_model.pkl", "rb") as f:
-        model = pickle.load(f)
+    model = joblib.load("churn_stacking_ensemble_model.joblib")
     with open("churn_encoder_v2.pkl", "rb") as f:
         encoder = pickle.load(f)
     return model, encoder
