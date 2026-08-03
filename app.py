@@ -42,11 +42,22 @@ if st.button("Predict"):
     encoded = encoder.transform(raw)
     encoded_df = pd.DataFrame(encoded, columns=encoder.get_feature_names_out())
 
-    # Numeric features first, then encoded dummies — must match training column order
+    # All numeric features — must match training column order exactly
+    # Features not collected from user default to 0 (neutral)
     numeric_df = pd.DataFrame([{
-        'TECH_COMFORT_SCORE': tech_comfort_score,
-        'AVG_SESSION_LENGTH': avg_session_length,
-        'TOTAL_NUM_SESSIONS': total_num_sessions
+        'AGE':                        0,
+        'TECH_COMFORT_SCORE':         tech_comfort_score,
+        'TOTAL_NUM_SESSIONS':         total_num_sessions,
+        'ACTIVE_MONTHS':              0,
+        'AVG_SESSION_LENGTH':         avg_session_length,
+        'DAYS_SINCE_LAST_ACTIVITY':   0,
+        'SESSION_GROWTH_RATIO':       0,
+        'PRODUCTS_USED':              0,
+        'DISTINCT_ACTIVITY_DAYS':     0,
+        'SESSION_VARIABILITY':        0,
+        'AVG_DAYS_TO_PAYMENT':        0,
+        'LATE_PAYMENT_FLAG':          0,
+        'NUM_SUBSCRIPTIONS_HIST':     0
     }])
 
     input_df = pd.concat([numeric_df, encoded_df], axis=1)
@@ -62,4 +73,3 @@ if st.button("Predict"):
         st.warning(f"Churn Risk: {risk}")
     else:
         st.success(f"Churn Risk: {risk}")
-
