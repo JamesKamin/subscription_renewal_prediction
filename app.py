@@ -23,6 +23,7 @@ st.write("Enter customer attributes to predict the likelihood of subscription re
 tech_comfort_score = st.number_input("Tech Comfort Score", min_value=1, max_value=10, value=5)
 avg_session_length = st.number_input("Average Session Length (minutes)", min_value=0.0, max_value=500.0, value=30.0)
 total_num_sessions = st.number_input("Total Number of Sessions", min_value=0, max_value=10000, value=100)
+product           = st.radio("Product",       ["Daily Fitness", "Healthy Meals", "Mindful Living", "Premium Health", "Wellness Tracker"])
 income_level      = st.radio("Income Level",  ["Low", "Medium", "High", "Very High"])
 education         = st.radio("Education",     ["Graduate", "High School", "Other", "Post-Graduate"])
 device_type       = st.radio("Device Type",   ["Desktop-only", "Mobile-only", "Multi-device"])
@@ -31,8 +32,9 @@ if st.button("Predict"):
 
     # Build categorical DataFrame — column names must match encoder exactly
     raw = pd.DataFrame([{
-        'INCOME_LEVEL': income_level,
+        'PRODUCT':      product,
         'EDUCATION':    education,
+        'INCOME_LEVEL': income_level,
         'DEVICE_TYPE':  device_type,
     }])
 
@@ -60,3 +62,4 @@ if st.button("Predict"):
         st.warning(f"Churn Risk: {risk}")
     else:
         st.success(f"Churn Risk: {risk}")
+
