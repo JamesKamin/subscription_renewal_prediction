@@ -1,4 +1,8 @@
 streamlit
 joblib
 scikit-learn
+xgboost
+lightgbm
 numpy
+scipy
+pandas
